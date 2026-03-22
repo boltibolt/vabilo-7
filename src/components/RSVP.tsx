@@ -67,8 +67,8 @@ export default function RSVP() {
       `Ime in priimek: ${formData.name}`,
       `Email: ${formData.email}`,
       `Število oseb: ${formData.guests}`,
-      `Udeležba: ${formData.attending === 'yes' ? 'Da, pridem/pridemo' : 'Žal ne morem/moreva'}`,
-      `Potrebujem prenočišče: ${
+      `Udeležba: ${formData.attending === 'yes' ? 'Da, pridem/pridemo.' : 'Žal ne morem/moremo.'}`,
+      `Potrebujem/potrebujemo prenočišče: ${
         formData.attending === 'yes'
           ? (formData.needsAccommodation ? 'Da' : 'Ne')
           : 'Ni relevantno'
@@ -240,7 +240,7 @@ export default function RSVP() {
                     <Check className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" />
                   </div>
                   <span className="font-body text-sm sm:text-base text-[#3D3D3D] group-hover:text-[#C9A962] transition-colors">
-                    Da, pridem/pridemo
+                    Da, pridem/pridemo.
                   </span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
@@ -257,7 +257,7 @@ export default function RSVP() {
                     <Check className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" />
                   </div>
                   <span className="font-body text-sm sm:text-base text-[#3D3D3D] group-hover:text-[#C9A962] transition-colors">
-                    Žal ne morem/moremo
+                    Žal, ne morem/moremo.
                   </span>
                 </label>
               </div>
@@ -283,7 +283,7 @@ export default function RSVP() {
                       <Check className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" />
                     </div>
                     <span className="font-body text-sm sm:text-base text-[#3D3D3D] group-hover:text-[#C9A962] transition-colors leading-relaxed">
-                      Potrebujem prenočišče.
+                      Potrebujem/potrebujemo prenočišče.
                     </span>
                   </label>
 

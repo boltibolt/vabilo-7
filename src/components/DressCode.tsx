@@ -103,7 +103,7 @@ export default function DressCode() {
             </h3>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-0 gap-y-4 sm:gap-x-0 sm:gap-y-5 md:justify-between">
+         <div className="flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-1 sm:gap-y-4 lg:gap-x-4">
             {recommendedColors.map((item, index) => (
               <div 
                 key={index}
@@ -144,7 +144,7 @@ export default function DressCode() {
             </h3>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-0 gap-y-4 sm:gap-x-0 sm:gap-y-5 md:justify-between">
+         <div className="flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-1 sm:gap-y-4 lg:gap-x-4">
             {notRecommendedColors.map((item, index) => (
               <div 
                 key={index}
