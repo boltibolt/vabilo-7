@@ -140,7 +140,7 @@ export default function DressCode() {
           <div className="flex items-center justify-center gap-2 mb-4 sm:mb-5">
             <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
             <h3 className="font-display text-base sm:text-lg text-[#3D3D3D] uppercase tracking-wide text-center">
-              Prosiva, da se izognete spodnjim barvam.
+              Prosiva, da se izognete spodnjim barvam
             </h3>
           </div>
           
