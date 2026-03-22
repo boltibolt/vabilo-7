@@ -103,11 +103,11 @@ export default function DressCode() {
             </h3>
           </div>
           
-         <div className="flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-1 sm:gap-y-4 lg:gap-x-4">
+         <div className="flex flex-wrap justify-center gap-x-0.5 gap-y-3 sm:gap-x-1 sm:gap-y-3 lg:gap-x-4">
             {recommendedColors.map((item, index) => (
               <div 
                 key={index}
-                className="recommended-color w-[84px] sm:w-[96px] md:w-[104px] flex flex-col items-center gap-1.5 sm:gap-2 text-center"
+                className="recommended-color w-[70px] sm:w-[78px] md:w-[86px] flex flex-col items-center gap-1.5 sm:gap-2 text-center"
                 style={{ opacity: 0 }}
               >
                 <div 
@@ -144,11 +144,11 @@ export default function DressCode() {
             </h3>
           </div>
           
-         <div className="flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-1 sm:gap-y-4 lg:gap-x-4">
+         <div className="flex flex-wrap justify-center gap-x-0.5 gap-y-3 sm:gap-x-1 sm:gap-y-3 lg:gap-x-4">
             {notRecommendedColors.map((item, index) => (
               <div 
                 key={index}
-                className="notrecommended-color w-[84px] sm:w-[96px] md:w-[104px] flex flex-col items-center gap-1.5 sm:gap-2 text-center"
+                className="notrecommended-color w-[70px] sm:w-[78px] md:w-[86px] flex flex-col items-center gap-1.5 sm:gap-2 text-center"
                 style={{ opacity: 0 }}
               >
                 <div 
