@@ -24,7 +24,8 @@ export default function RSVP() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.rsvp-header',
+      gsap.fromTo(
+        '.rsvp-header',
         { opacity: 0, y: 20 },
         {
           opacity: 1,
@@ -39,7 +40,8 @@ export default function RSVP() {
         }
       );
 
-      gsap.fromTo('.form-field',
+      gsap.fromTo(
+        '.form-field',
         { opacity: 0, y: 15 },
         {
           opacity: 1,
@@ -63,67 +65,64 @@ export default function RSVP() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      guests: formData.guests,
+      attending: formData.attending === 'yes' ? 'Da, pridem/pridemo.' : 'Žal ne morem/moremo.',
+      needsAccommodation:
+        formData.attending === 'yes'
+          ? formData.needsAccommodation
+            ? 'Da'
+            : 'Ne'
+          : 'Ni relevantno',
+      accommodationBudget:
+        formData.attending === 'yes' && formData.needsAccommodation
+          ? formData.accommodationBudget
+          : '',
+      message: formData.message
+    };
 
-  const payload = {
-    name: formData.name,
-    email: formData.email,
-    guests: formData.guests,
-    attending: formData.attending === 'yes' ? 'Da, pridem/pridemo.' : 'Žal ne morem/moremo.',
-    needsAccommodation:
-      formData.attending === 'yes'
-        ? (formData.needsAccommodation ? 'Da' : 'Ne')
-        : 'Ni relevantno',
-    accommodationBudget:
-      formData.attending === 'yes' && formData.needsAccommodation
-        ? formData.accommodationBudget
-        : '',
-    message: formData.message
-  };
+    try {
+      const response = await fetch('https://formspree.io/f/maqpgonb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-  try {
-    const response = await fetch('https://formspree.io/f/maqpgonb', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+      if (!response.ok) {
+        throw new Error('Submit failed');
+      }
 
-    if (!response.ok) {
-      throw new Error('Submit failed');
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#C9A962', '#D4BC7A', '#FAF8F5', '#A68B4B']
+      });
+
+      gsap.to('.rsvp-form', {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.4,
+        ease: 'power2.in'
+      });
+
+      gsap.fromTo(
+        '.success-message',
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out', delay: 0.3 }
+      );
+    } catch (error) {
+      setIsSubmitting(false);
+      alert('Prišlo je do napake pri pošiljanju. Poskusi znova.');
     }
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#C9A962', '#D4BC7A', '#FAF8F5', '#A68B4B']
-    });
-
-    gsap.to('.rsvp-form', {
-      opacity: 0,
-      scale: 0.95,
-      duration: 0.4,
-      ease: 'power2.in'
-    });
-
-    gsap.fromTo(
-      '.success-message',
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out', delay: 0.3 }
-    );
-  } catch (error) {
-    setIsSubmitting(false);
-    alert('Prišlo je do napake pri pošiljanju. Poskusi znova.');
-  }
-};
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -151,12 +150,11 @@ export default function RSVP() {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-xl mx-auto">
-        {/* Header */}
         <div className="rsvp-header text-center mb-8 sm:mb-10" style={{ opacity: 0 }}>
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-px w-10 sm:w-12 bg-gradient-to-r from-transparent to-[#C9A962]" />
@@ -172,10 +170,8 @@ export default function RSVP() {
           </p>
         </div>
 
-        {/* Form */}
         {!isSubmitted ? (
           <form onSubmit={handleSubmit} className="rsvp-form space-y-4 sm:space-y-6">
-            {/* Name Field */}
             <div className="form-field relative" style={{ opacity: 0 }}>
               <label className="block font-body text-sm text-[#7A7A7A] mb-1.5 sm:mb-2">
                 Ime in priimek
@@ -194,7 +190,6 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Email Field */}
             <div className="form-field relative" style={{ opacity: 0 }}>
               <label className="block font-body text-sm text-[#7A7A7A] mb-1.5 sm:mb-2">
                 Email
@@ -213,7 +208,6 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Number of Guests */}
             <div className="form-field relative" style={{ opacity: 0 }}>
               <label className="block font-body text-sm text-[#7A7A7A] mb-1.5 sm:mb-2">
                 Število oseb
@@ -233,7 +227,6 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Attending Radio */}
             <div className="form-field" style={{ opacity: 0 }}>
               <label className="block font-body text-sm text-[#7A7A7A] mb-2 sm:mb-3">
                 Ali se boste udeležili?
@@ -256,6 +249,7 @@ export default function RSVP() {
                     Da, pridem/pridemo.
                   </span>
                 </label>
+
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <div className="relative flex-shrink-0">
                     <input
@@ -276,7 +270,6 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Accommodation */}
             {formData.attending === 'yes' && (
               <div className="form-field" style={{ opacity: 0 }}>
                 <label className="block font-body text-sm text-[#7A7A7A] mb-2 sm:mb-3">
@@ -338,7 +331,6 @@ export default function RSVP() {
               </div>
             )}
 
-            {/* Message Field */}
             <div className="form-field relative" style={{ opacity: 0 }}>
               <label className="block font-body text-sm text-[#7A7A7A] mb-1.5 sm:mb-2">
                 Sporočilo (opcijsko)
@@ -356,7 +348,6 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="form-field pt-2 sm:pt-4" style={{ opacity: 0 }}>
               <button
                 type="submit"
@@ -378,7 +369,6 @@ export default function RSVP() {
             </div>
           </form>
         ) : (
-          /* Success Message */
           <div className="success-message text-center py-10 sm:py-12" style={{ opacity: 0 }}>
             <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-[#C9A962] flex items-center justify-center">
               <Check className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -387,17 +377,16 @@ export default function RSVP() {
               Hvala za vaš odgovor!
             </h3>
             <p className="font-body text-base sm:text-lg text-[#7A7A7A]">
-              {formData.attending === 'yes' 
-                ? 'Navdušena sva, da boste z nama!' 
+              {formData.attending === 'yes'
+                ? 'Navdušena sva, da boste z nama!'
                 : 'Žal nam je, da se ne morete udeležiti.'}
             </p>
-           <p className="font-body text-xs sm:text-sm text-[#7A7A7A] mt-3 sm:mt-4">
-  Vaš odgovor je bil uspešno poslan.
-</p>
+            <p className="font-body text-xs sm:text-sm text-[#7A7A7A] mt-3 sm:mt-4">
+              Vaš odgovor je bil uspešno poslan.
+            </p>
           </div>
         )}
 
-        {/* Bottom decoration */}
         <div className="mt-10 sm:mt-12 flex items-center justify-center">
           <div className="h-px w-24 sm:w-32 bg-gradient-to-r from-transparent via-[#C9A962] to-transparent" />
         </div>
