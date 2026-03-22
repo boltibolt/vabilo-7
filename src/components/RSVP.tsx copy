@@ -63,67 +63,54 @@ export default function RSVP() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    const details = [
+      `Ime in priimek: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Število oseb: ${formData.guests}`,
+      `Udeležba: ${formData.attending === 'yes' ? 'Da, pridem/pridemo.' : 'Žal ne morem/moremo.'}`,
+      `Potrebujem/potrebujemo prenočišče: ${
+        formData.attending === 'yes'
+          ? (formData.needsAccommodation ? 'Da' : 'Ne')
+          : 'Ni relevantno'
+      }`
+    ];
 
-  const payload = {
-    name: formData.name,
-    email: formData.email,
-    guests: formData.guests,
-    attending: formData.attending === 'yes' ? 'Da, pridem/pridemo.' : 'Žal ne morem/moremo.',
-    needsAccommodation:
-      formData.attending === 'yes'
-        ? (formData.needsAccommodation ? 'Da' : 'Ne')
-        : 'Ni relevantno',
-    accommodationBudget:
-      formData.attending === 'yes' && formData.needsAccommodation
-        ? formData.accommodationBudget
-        : '',
-    message: formData.message
-  };
-
-  try {
-    const response = await fetch('https://formspree.io/f/maqpgonb', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      throw new Error('Submit failed');
+    if (formData.attending === 'yes' && formData.needsAccommodation && formData.accommodationBudget) {
+      details.push(`Cenovni razred prenočišča: ${formData.accommodationBudget}`);
     }
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    if (formData.message.trim()) {
+      details.push(`Sporočilo: ${formData.message}`);
+    }
 
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#C9A962', '#D4BC7A', '#FAF8F5', '#A68B4B']
-    });
+    const subject = encodeURIComponent(`RSVP - ${formData.name} - Poročna udeležba`);
+    const body = encodeURIComponent(details.join('\n'));
 
-    gsap.to('.rsvp-form', {
-      opacity: 0,
-      scale: 0.95,
-      duration: 0.4,
-      ease: 'power2.in'
-    });
+    window.location.href = `mailto:mitja.boltezar@gmail.com?subject=${subject}&body=${body}`;
 
-    gsap.fromTo(
-      '.success-message',
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out', delay: 0.3 }
-    );
-  } catch (error) {
-    setIsSubmitting(false);
-    alert('Prišlo je do napake pri pošiljanju. Poskusi znova.');
-  }
-};
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#C9A962', '#D4BC7A', '#FAF8F5', '#A68B4B']
+      });
+
+      gsap.to('.rsvp-form', {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.4,
+        ease: 'power2.in'
+      });
+
+      gsap.fromTo('.success-message',
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out', delay: 0.3 }
+      );
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -391,9 +378,9 @@ export default function RSVP() {
                 ? 'Navdušena sva, da boste z nama!' 
                 : 'Žal nam je, da se ne morete udeležiti.'}
             </p>
-           <p className="font-body text-xs sm:text-sm text-[#7A7A7A] mt-3 sm:mt-4">
-  Vaš odgovor je bil uspešno poslan.
-</p>
+            <p className="font-body text-xs sm:text-sm text-[#7A7A7A] mt-3 sm:mt-4">
+              Email odprt v vašem odjemalcu. Prosimo, pošljite ga.
+            </p>
           </div>
         )}
 
