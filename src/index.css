@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 0 0% 24%;
+    --card: 40 33% 97%;
+    --card-foreground: 0 0% 24%;
+    --popover: 40 33% 97%;
+    --popover-foreground: 0 0% 24%;
+    --primary: 45 42% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 20% 90%;
+    --secondary-foreground: 0 0% 24%;
+    --muted: 40 20% 90%;
+    --muted-foreground: 0 0% 48%;
+    --accent: 45 42% 59%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 45 30% 75%;
+    --input: 40 20% 90%;
+    --ring: 45 42% 59%;
+    --radius: 0.5rem;
+    
+    /* Custom Wedding Colors */
+    --gold: #C9A962;
+    --gold-dark: #A68B4B;
+    --gold-light: #D4BC7A;
+    --cream: #FAF8F5;
+    --text-dark: #3D3D3D;
+    --text-light: #7A7A7A;
+    
+    /* Dress Code Colors */
+    --navy: #1a365d;
+    --dark-green: #1a472a;
+    --gray: #4a5568;
+    --brown: #5D4037;
+    --yellow: #D4AF37;
+    --red: #C53030;
+    --orange: #DD6B20;
+    --pink: #D53F8C;
+    --purple: #805AD5;
+    
+    /* Easing Functions */
+    --ease-romantic: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
+    --ease-elastic: cubic-bezier(0.68, -0.15, 0.265, 1.15);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-wax-melt: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#FAF8F5] text-[#3D3D3D] antialiased;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+  
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-body {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  .text-gold {
+    color: var(--gold);
+  }
+  
+  .bg-gold {
+    background-color: var(--gold);
+  }
+  
+  .border-gold {
+    border-color: var(--gold);
+  }
+  
+  /* Gold shimmer animation */
+  @keyframes goldShimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+  
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--gold) 0%,
+      var(--gold-light) 25%,
+      var(--gold) 50%,
+      var(--gold-light) 75%,
+      var(--gold) 100%
+    );
+    background-size: 200% auto;
+    animation: goldShimmer 8s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Seal pulse animation */
+  @keyframes sealPulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 20px rgba(201, 169, 98, 0.4),
+        0 0 40px rgba(201, 169, 98, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 0 30px rgba(201, 169, 98, 0.6),
+        0 0 60px rgba(201, 169, 98, 0.4),
+        0 0 90px rgba(201, 169, 98, 0.2);
+    }
+  }
+  
+  .seal-glow {
+    animation: sealPulse 4s ease-in-out infinite;
+  }
+  
+  /* Floating animation */
+  @keyframes gentleFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .float-gentle {
+    animation: gentleFloat 4s ease-in-out infinite;
+  }
+  
+  /* Glow expand animation */
+  @keyframes glowExpand {
+    0% {
+      transform: scale(0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .glow-expand {
+    animation: glowExpand 0.8s var(--ease-smooth) forwards;
+  }
+  
+  /* Button shine effect */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s var(--ease-smooth);
+  }
+  
+  .btn-shine:hover::after {
+    left: 100%;
+  }
+  
+  /* Paper texture background */
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  
+  /* Decorative border */
+  .ornate-border {
+    position: relative;
+  }
+  
+  .ornate-border::before,
+  .ornate-border::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--gold);
+  }
+  
+  .ornate-border::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .ornate-border::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+  }
+  
+  /* Input focus styles */
+  .input-elegant {
+    @apply w-full px-4 py-3 bg-white border-2 border-[#E5DDD3] rounded-lg outline-none transition-all duration-200;
+  }
+  
+  .input-elegant:focus {
+    @apply border-[#C9A962];
+    box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.2);
+  }
+  
+  /* Color circle styles */
+  .color-circle {
+    @apply w-14 h-14 rounded-full border-3 border-[#C9A962] transition-all duration-200 cursor-pointer;
+  }
+  
+  .color-circle:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px currentColor;
+  }
+  
+  /* Timeline path */
+  .timeline-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  
+  /* Confetti canvas */
+  .confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}

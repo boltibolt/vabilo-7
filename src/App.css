@@ -1,0 +1,40 @@
+/* App-specific styles */
+
+/* Smooth transitions between sections */
+.section-transition {
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+/* Envelope glow effect enhancement */
+.envelope-glow {
+  filter: drop-shadow(0 0 20px rgba(201, 169, 98, 0.3));
+}
+
+/* Letter paper texture */
+.letter-paper {
+  background-color: #FAF8F5;
+  background-image: 
+    linear-gradient(90deg, transparent 98%, rgba(201, 169, 98, 0.03) 98%),
+    linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ornate-border::before,
+  .ornate-border::after {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+}
