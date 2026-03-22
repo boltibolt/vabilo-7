@@ -23,7 +23,7 @@ export default function Footer() {
         
         <div className="mt-6 pt-6 border-t border-[#E5DDD3]">
           <p className="font-body text-xs text-[#7A7A7A]">
-            Z ljubeznijo vabljeni na najin poročni dan
+            Z ljubeznijo vabljeni na najin poročni dan.
           </p>
         </div>
       </div>

@@ -103,7 +103,7 @@ export default function DressCode() {
             </h3>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-3 gap-y-4 sm:gap-x-5 sm:gap-y-5 md:justify-between">
+          <div className="flex flex-wrap justify-center gap-x-1 gap-y-4 sm:gap-x-2 sm:gap-y-5 md:justify-between">
             {recommendedColors.map((item, index) => (
               <div 
                 key={index}
@@ -140,11 +140,11 @@ export default function DressCode() {
           <div className="flex items-center justify-center gap-2 mb-4 sm:mb-5">
             <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
             <h3 className="font-display text-base sm:text-lg text-[#3D3D3D] uppercase tracking-wide text-center">
-              Barve, ki jih prosiva, da jih gostje ne nosite
+              Prosiva, da se izognete spodnjim barvam.
             </h3>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-x-3 gap-y-4 sm:gap-x-5 sm:gap-y-5 md:justify-between">
+          <div className="flex flex-wrap justify-center gap-x-1 gap-y-4 sm:gap-x-2 sm:gap-y-5 md:justify-between">
             {notRecommendedColors.map((item, index) => (
               <div 
                 key={index}

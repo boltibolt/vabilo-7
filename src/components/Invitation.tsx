@@ -111,12 +111,11 @@ export default function Invitation() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center">
             <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A962] flex-shrink-0" />
             <p className="font-body text-sm sm:text-base text-[#7A7A7A]">
-              <span className="text-[#3D3D3D] font-medium">Pomembno:</span> Na poroki si želiva sproščenega vzdušja v družbi odraslih,
-              zato bo dogodek namenjen le odraslim gostom. 
+              <span className="text-[#3D3D3D] font-medium">Pomembno:</span> Čeprav imava oba zelo rada otroke, si za ta večer želiva sproščenega vzdušja v družbi odraslih, zato bo pogostitev in slavje namenjeno le odraslim gostom.
  <br />
 Prihod svatov pričakujemo ob 11:30 uri na Brdu pri Kranju, kjer vas bodo prijazno sprejele družice.
 <br />
-Parkirišče v Kempinskem je zagotovljeno v garažni hiši pod hotelom.
+Parkirišče je zagotovljeno v garažni hiši pod hotelom Kempinski.
             </p>
           </div>
         </div>
