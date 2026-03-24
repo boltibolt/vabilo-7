@@ -110,12 +110,12 @@ export default function Invitation() {
         <div className="children-note mt-8 sm:mt-10 pt-6 border-t border-[#E5DDD3]" style={{ opacity: 0 }}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center">
             <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A962] flex-shrink-0" />
-            <p className="font-body text-sm sm:text-base text-[#7A7A7A]">
-              <span className="text-[#3D3D3D] font-medium">Pomembno:</span> Prihod svatov pričakujemo ob 11:30 uri na Brdu pri Kranju, kjer vas bodo prijazno sprejele družice.
+            <p className="font-body text-sm sm:text-base text-[#7A7A7A] italic">
+              <span className="text-[#3D3D3D] font-medium"></span> Prihod gostov ob 11:30 uri na Brdu pri Kranju, kjer vas bodo prijazno sprejele najine družice.
 <br />
-Parkirišče je zagotovljeno v garažni hiši pod hotelom Kempinski.
+Čeprav imava oba rada otroke, so otroci dobrodošli na začetnem delu praznovanja, za večerni del slavja pa si želiva nekoliko bolj sproščenega vzdušja v družbi le odraslih gostov. 
  <br />
-Čeprav imava oba zelo rada otroke, si za ta večer želiva sproščenega vzdušja v družbi odraslih, zato bo pogostitev in slavje namenjeno le odraslim gostom.
+Parkirišče je zagotovljeno v garažni hiši pod hotelom Kempinski.
 
             </p>
           </div>

@@ -134,7 +134,7 @@ export default function Envelope({ onOpen, isOpen }: EnvelopeProps) {
 
       {/* Instruction Text */}
       <p className="envelope-instruction mt-6 font-body text-sm sm:text-base text-[#7A7A7A] italic opacity-0 text-center">
-        Klikni na pečat, da odpreš vabilo
+        Klikni na pečat, da odpreš vabilo.
       </p>
     </div>
   );
