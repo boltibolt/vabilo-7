@@ -71,7 +71,7 @@ export default function Gifts() {
           <p className="font-body text-base sm:text-lg md:text-xl text-[#3D3D3D] text-center leading-relaxed">
             Začela bova z ustvarjanjem najinega doma, treh mikrovalovnih pečic res ne potrebujeva. 
 <br />
-Najbolj vesela pa bova kakršnegakoli prispevka, s katerim nama boste pomagali na tej poti.
+Najbolj vesela bova kakršnegakoli prispevka, s katerim nama boste pomagali na tej poti.
           </p>
           
           {/* Decorative element */}

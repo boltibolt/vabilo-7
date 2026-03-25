@@ -113,9 +113,8 @@ export default function Invitation() {
             <p className="font-body text-sm sm:text-base text-[#7A7A7A] italic">
               <span className="text-[#3D3D3D] font-medium"></span> Prihod gostov ob 11:30 uri na Brdu pri Kranju, kjer vas bodo prijazno sprejele najine družice.
 <br />
-Čeprav imava oba rada otroke, so otroci dobrodošli na začetnem delu praznovanja, za večerni del slavja pa si želiva nekoliko bolj sproščenega vzdušja v družbi le odraslih gostov. 
- <br />
-Parkirišče je zagotovljeno v garažni hiši pod hotelom Kempinski.
+Čeprav imava oba rada otroke, so otroci dobrodošli na začetnem delu dogodka. Za večerni del pa si želiva nekoliko bolj sproščenega vzdušja v družbi odraslih gostov.
+
 
             </p>
           </div>
